@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const user = {
+        university: "GoIT",
+        licence: "234543435",
+        getFullName() {
+          return `${this.name} ${this.lastName}`;
+        },
+        setUniversity(newUniversity) {
+          this.university = newUniversity;
+        },
+      };
+
+      Object.defineProperty(user, "licence", {
+        enumerable: false,
+      });
+
+      const student = {
+        name: "Mykola",
+        lastName: "Olen",
+      };
+
+      const teacher = {
+        name: "Bogdan",
+        lastName: "Lyamzin",
+      };
+
+      // student.__proto__ = user;
+      Object.setPrototypeOf(student, user);
+      // student[[Prototype]] = user;
+      // teacher.__proto__ = user;
+      Object.setPrototypeOf(teacher, user);
+      // teacher[[Prototype]] = user;
+      // console.log(student.getFullName());
+      // console.log(teacher.getFullName());
+      // student.getFullName = function(){
+      //     return this.name;
+      // }
+      // console.log(student)
+      // console.log(student.getFullName)
+      // console.log(user.getFullName)
+      // delete student.getFullName;
+      // console.log(student)
+      // delete student.getFullName;
+      // student.getUniversity = function (){
+      //     return this.university || "unknown";
+      // }
+      // console.log(student.getUniversity())
+
+      //   student.setUniversity("Neoverisity");
+      //   user.setUniversity.this = student;
+      //   user.setUniversity.this = user;
+      //   console.log(user);
+      //   console.log(student);
+
+      for (const key in student) {
+        if (student.hasOwnProperty(key)) {
+          console.log(key);
+        }
+      }
+      // console.log(user.hasOwnProperty("name"));
+      // console.log(user.hasOwnProperty("age"));
+    </script>
+  </body>
+</html>

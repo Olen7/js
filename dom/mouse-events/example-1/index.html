@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            background-color: transparent;
+            padding: 10px 15px;
+            border: 1px solid red;
+            border-radius: 5px;
+            color: red;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: pointer;
+        }
+        .main-text {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p class="main-text js-main-text"><span>First</span> paragraph</p>
+    <p class="main-text js-main-text">Second paragraph</p>
+    <button id="increase-btn" class="btn js-btn">Increase counter</button>
+    <button id="decrease-btn" class="btn js-btn">Decrease counter</button>
+    <p id="click-count">0</p>
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>

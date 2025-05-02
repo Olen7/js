@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача логін админістратора. Якщо логін це:
+        evgen142 або olena15 або ironPrice виведіть повідомлення
+        "Вітаємо з повернення, у вас багато роботи". Якщо ні - виведіть
+        повідомлення "Такого адміністратора не існує"
+        */
+       const loginUser = prompt("Напишіть ваш логін!")
+       const message = (loginUser === "evgen142" || loginUser === "olena15" || loginUser === "ironPrice") ? "Вітаємо з повернення, у вас багато роботи" : "Такого адміністратора не існує"
+    //    if (loginUser === "evgen142" || loginUser === "olena15" || loginUser === "ironPrice") {
+    //              alert("Вітаємо з повернення, у вас багато роботи")
+    //    }else{
+    //     alert("Такого адміністратора не існує")
+    //    }
+    alert(message)
+    </script>
+</body>
+</html>

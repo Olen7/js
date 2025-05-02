@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const User = function (name, lastName) {
+        //     this.name = name;
+        //     this.lastName = lastName;
+        // }
+
+        // User.prototype.getFullName = function() {
+        //     return `${this.name} ${this.lastName}`;
+        // }
+        class User {
+            constructor(name, lastName) {
+                // this = {};
+                this._name = name;
+                this._lastName = lastName;
+            }
+
+            getFullName(){
+                return `${this.name} ${this.lastName}`;
+            }
+
+            isName(value) {
+                return (typeof value === "string" && value.length > 0 && isNaN(value[0]))
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            set name(newName) {
+                if(this.isName(newName)) {
+                    this._name = newName;
+                }
+            }
+
+            get lastName() {
+                return this._lastName;
+            }
+
+            set lastName(newLastName) {
+                if(this.isName(newLastName)) {
+                    this._lastName = newLastName;
+                }
+            }
+        }
+
+        const student = new User("Mykola", "Olen");
+        // User.constructor("Mykola", "Olen")
+        console.log(student);
+        console.log(student.getFullName());
+        student.lastName = "Oleh";
+        console.log(student.getFullName());
+        student.lastName = 22;
+        console.log(student.getFullName());
+    </script>
+</body>
+</html>

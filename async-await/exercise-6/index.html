@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="my-posts">
+        <form id="post-add-form">
+            <label for="title">title</label>
+           <input type="text" name="title" id="title-item" placeholder="title" required >
+           <textarea name="text" id="text-item"></textarea>
+           <button type="submit">add post</button>
+        </form>
+        <ul id="post-list"></ul>
+    </div>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача вік. Якщо він меньше 18, виведіть
+        повідомлення "Нажаль, двері клубу для вас зачинені",
+        якщо більше - повідомлення "Проходьте будь ласка"
+        */
+       const ageUser = Number(prompt("Напишіть Ваш вік!"))
+       const doorStatus = ageUser >= 18 ? "Проходьте будь ласка" : "Нажаль, двері клубу для вас зачинені";
+       console.log(doorStatus);
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+.delete-btn{
+  background-color: #007bff; /* Синій колір фону */
+  color: white; /* Білий текст */
+  border: none; /* Видаляємо рамку */
+  padding: 5px 10px; /* Внутрішній відступ */
+  margin: 5px 20px;
+  font-size: 12px; /* Розмір шрифту */
+  border-radius: 5px; /* Закруглені краї */
+  cursor: pointer; /* Вказівник миші при наведенні */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #0056b3; /* Темніший синій при наведенні */
+  transform: scale(1.05); /* Легке збільшення */
+}
+
+.delete-btn:active {
+  background-color: #00408a; /* Ще темніший при натисканні */
+  transform: scale(0.95); /* Легке зменшення */
+}
+.delete-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Колір заливки */
+  transition: width 2s ease-in-out;
+}
+.delete-btn:hover::before {
+  width: 100%; /* Заповнює кнопку при наведенні */
+}
+.list-item {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: white;
+    transition: background-color 1.5s ease-in-out;
+}
+
+.list-item.fill-active {
+    background-color: #dc3546; /* Червоний фон */
+    color: rgb(255, 255, 255); /* Робимо текст білим для контрасту */
+}
+.block-foto{
+  background-color: #0056b3;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  left: 40px;
+  top: 40px;
+  border-radius: 5px;
+  background-image: url(/dom/dom-create-elements/exercise-6/characters/Агата-Гетерснін.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+    </style>
+    <div class = "block-foto" id="image-window"></div>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

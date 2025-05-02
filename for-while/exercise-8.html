@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача вік. Якщо він введе не число, перепитайте
+        його зі словами "Вік має бути числом".
+        */
+       let ageUser = Number(prompt("Напишіть Ваш вік!"))
+       while(!ageUser){
+        ageUser = Number(prompt("Напишіть Ваш вік ще раз!"))
+       }
+       console.log(ageUser);
+    </script>
+</body>
+</html>

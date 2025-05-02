@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        */
+        // const srt = "Hello \tWord Word";
+        // const subString = "Word"
+        // // console.log(srt.indexOf(subString) + subString.length);
+        // // console.log(srt.lastIndexOf("Word"));
+        // // console.log(srt.replaceAll(subString, "*"));
+        // console.log(srt.search(subString));
+
+        // const arr = [1, 5, 8, 10 , 25, 2]
+        // console.log(arr.toSorted((a,b) => a - b));
+        // console.log(arr);
+
+        const obj = {name: "Taras", age: 25,}
+        Object.freeze(obj)// Object.freeze() заморожує обєкт
+        obj.name = "Ivan"
+        console.log(obj);
+        // 
+        const user = {name: 'Mykola', age: 25,}
+        const student = {group: "a1"} 
+        // console.log(Object.entries(user));
+        // for (const [key,value] of Object.entries(student)) {
+        //     // console.log(key);
+        //     // user[key] = student[key]
+        //     user[key] = value
+        // }
+        Object.assign(user, student)//Object.assign() копіює student і вставляє в обєкт user 
+        // Object.defineProperty(user, 'name', { //Object.defineProperty() додає як що немає такої властивості і налаштовує
+        //     //value: user.name,
+        //     writable: false, // writable: false, - не можна змінювати
+        //     enumerable: false,//  enumerable: false - видаляє з переліку
+        // })//  Object.defineProperty 
+        Object.defineProperties(user, { //додає як що немає таких властивостей і налаштовує
+            name: {writable:false,},
+            age:{enumerable:false},
+        })
+     user.name = 'Igor'
+     for (const key in user) {
+          console.log(key);
+     }
+        console.log(user);
+    </script>
+</body>
+</html>

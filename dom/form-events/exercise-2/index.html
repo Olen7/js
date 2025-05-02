@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .error {
+        color: brown;
+        margin: 5px;
+        text-align: center;
+      }
+      .register-form-items {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="register-form" class="register-form">
+      <div class="register-form-items">
+        <label for="register-form-username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          id="register-form-username"
+        />
+      </div>
+      <div class="register-form-items">
+        <label for="register-form-email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          id="register-form-email"
+        />
+      </div>
+      <div class="register-form-items">
+        <label for="register-form-password">Password:</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          id="register-form-password"
+        />
+      </div>
+      <div class="register-form-items">
+        <label for="register-form-repeat-password">Repeat password:</label>
+        <input
+          type="password"
+          name="repeat-password"
+          placeholder="Repeat password"
+          id="register-form-repeat-password"
+        />
+      </div>
+      <button>Register</button>
+    </form>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

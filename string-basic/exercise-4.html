@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача ім'я. Якщо він ввів або менше 2 символів,
+        або перший символ - число, перепитайте його.
+        */
+       let nameUser = prompt("Напишіть Ваше імя")
+
+       while(nameUser === null || !isNaN(nameUser[0]) || nameUser.length < 2){
+        nameUser = prompt("Напишіть Ваше імя ще раз")
+       }
+    </script>
+</body>
+</html>

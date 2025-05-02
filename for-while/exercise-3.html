@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Пройдіться циклом for за числами від 0 до 99. 
+        Якщо число ділитися на 3 без залишку, виведіть у консоль "Fizz", 
+        якщо на 5 без залишку - "Burg", якщо на 3 і на 5 - "Fizz Burg".
+        */
+       for (let i = 0; i < 100; i+=1) {
+        if (!(i % 3) && !(i % 5)){
+             console.log(`${i} "Fizz Burg"`)
+          continue
+        }
+        if (!(i % 3)) console.log(`${i} "Fizz"`);
+        if (!(i % 5)) console.log(`${i} "Burg"`);
+       }
+    </script>
+</body>
+</html>

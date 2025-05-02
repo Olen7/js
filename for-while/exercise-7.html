@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача ім'я. Якщо він нічого не напише або натисне Cancel,
+        то перепитайте ім'я. Якщо він другий раз нічого не введе, перепитуйте, доки
+        від щось не введе. Але якщо другий чи наступний рази від натисне Cancel,
+        то більше не запитуйте.
+        Якщо в результаті перепитувань користувач написав своє ім'я, виведіть у консоль
+        повідомлення "Вітаю, userName".
+        Якщо так і не написав - виведіть у консоль "Ну і добре".
+        */
+       let nameUser = prompt('Напишіть Ваше імя!')
+       while(!nameUser){
+        nameUser = prompt('Напишіть Ваше імя ще раз!')
+       if (nameUser === null) {
+        break
+       }
+    }
+    </script>
+</body>
+</html>

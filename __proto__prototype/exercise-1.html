@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        створіть 2 об'єкти - washingMachine та coffeeMachine. В кожного має бути властивості _name, _price та _discount.
+        Винесіть методи set price, get price, set name, get name, set discount, get discount в прототип.
+        _discount має бути у відсотках, наприклад 20, 30, 40.
+        Ціна має рахуватися так: якщо є discount, то цей відсоток має відніматися від _price, інакше треба брати просто _price. 
+        
+        */
+       const product = {
+          get name(){
+              return this._name
+          },
+          set name(newName){
+            if (typeof newName === "string" && newName.trim() !== "") {
+                this._name = newName.trim()
+            }
+        },
+        get price(){
+            if (this._discount > 0) {
+                return (1 - this._discount / 100) * this._price
+            }
+              return this._price
+          },
+          isNumber(value){
+            return (typeof value === "number" && Number.isFinite(value))
+          },
+          set price(newPrice){
+              if (this.isNumber(newPrice) && newPrice > 0) {//typeof Number(newPrice) === "number"
+              this._price = newPrice
+              }
+          },
+          get discount(){
+            return this._discount
+          },
+          set discount(newDiscount){
+              if (this.isNumber(newDiscount) && newDiscount >= 0 && newDiscount < 100) {
+                this.discount = newDiscount
+              }
+          }
+       }
+       const washingMachine = {
+        _name: "LG",
+        _price: 300,
+        _discount: 10,
+       }
+       const coffeeMachine = {
+        _name: "Gorenje",
+        _price: 300,
+        _discount: 20,
+       }
+       Object.setPrototypeOf(washingMachine, product);
+       Object.setPrototypeOf(coffeeMachine, product);
+       console.log(washingMachine);
+       console.log(coffeeMachine);
+    </script>
+</body>
+</html>

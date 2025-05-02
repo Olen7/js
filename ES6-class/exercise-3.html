@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+        const items = [
+            {
+            name: "lenovo X120S",
+            price: 17800,
+            },
+            {
+            name: "Playstation 5 Slim",
+            price: 24000,
+            },
+            {
+            name: "Darkside Genesis",
+            price: 1200,
+            },
+        ];
+         /*
+        Перепишіть попередню задачу, зробивши якщо треба певні методи приватними.
+        */
+       class Cart{
+        _items = []
+        constructor(items = []){
+            this._items = [...items];
+        }
+        add({name, price}){
+        if (this._items.find(item => item.name === name)) {
+            console.log(`${name} is already exist`);
+            return false
+        }
+        this._items.push({name, price})
+        return true
+        }
+        remove(name){
+            if (this._items.find(item => item.name === name)) {
+                const index = this._items.findIndex(item => item.name === name)
+                this._items.splice(index, 1)
+                return true
+            }
+            console.log(`${name} not found`);
+            return false
+
+        }
+        get totalPrice(){
+           return this._items.reduce((acc, item)=>{
+                return acc + item.price
+            }, 0)
+        }
+        get totalCount(){
+            return this._items.length
+        }
+
+       }
+       const newCart = new Cart(items)
+    </script>
+</body>
+</html>

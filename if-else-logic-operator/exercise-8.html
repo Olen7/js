@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача середній бал по екзаменам. Якщо він буде нижче 6,
+        то виведіть повідомлення "курс треба буде пройти ще раз". Якщо між 6 та меньше 10,
+        виведіть повідомлення "ви пройшли на наступний курс". Якщо більше 10 - виведіть
+        повідомлення "ви закінчили курс відмінно".
+        */
+       const averageScore = Number(prompt("Напишіть середню оцінку по всіх екзаменах!"))
+       if (averageScore < 6) {
+          alert("курс треба буде пройти ще раз")
+       }else if(averageScore < 10){
+          alert("Ви пройшли на наступний курс")
+       }else{
+          alert("Ви закінчили курс відмінно")
+       }
+    </script>
+</body>
+</html>

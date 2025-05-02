@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        створіть класс Person, який отримує такі дані:
+        - name;
+        - lastName;
+        - birthday (дату народження);
+        та має такі методи:
+        - getFullName - повертає повне ім'я;
+        - getAge - вираховує вік;
+
+        Створіть клас Student, який наслідується від класу Person, та має такі властивості:
+        - course - курс, на якому людина знаходиться (1, 2, 3, 4 або 5);
+        - tabel - об'єкт вигляду:
+         {
+            "1": {
+                mathematic: 12,
+            }
+         }
+         де ключами є номера курсу.
+
+         Та методами:
+         - addScore(score, subject) - додає оцінку у табель відповідного року, якщо її немає
+         
+        */
+       class Person{
+        #name
+        #lastName
+        #birthday
+        constructor({name, lastName, birthday}){
+          this.#name = name;
+          this.#lastName = lastName;
+          this.#birthday = birthday;// 25.07.1995
+        }
+       get getFullName(){
+         return `${this.#name} ${this.#lastName}`
+        }
+        // getAge - вираховує вік;
+        get getAge(){
+            const year = Number(this.#birthday.split(".").pop()) 
+             return 2025 - year
+        }
+
+       }
+       class Student extends Person{
+        #course
+        #tabel = {}
+        constructor({course, ...props}){
+            // super()
+            // 
+            super(props)
+            this.#course = course
+        }
+        addScore(score, subject){
+            const subTabel = this.#tabel[this.#course]
+            if (subTabel) {
+                if (!subTabel[subject]) {//this.#tabel[this.#course][subject]
+                    subTabel[subject] = score
+                }
+            }else{
+                this.#tabel[this.#course] = {[subject]: score};// як що назва властивості зберігається в зміній то ми її берем в квадратні дужки
+            }
+        }
+
+       }
+       const newStudent = new Student({course: "2", name: "Віктор", lastName: "Кобилянський", birthday: "25.07.1995"})
+       console.log(newStudent.getFullName);
+    </script>
+</body>
+</html>

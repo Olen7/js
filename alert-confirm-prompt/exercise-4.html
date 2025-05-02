@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у користувача температуру в Фаренгейте і виведіть її в консоль
+        у градусах Цельсія, округливши до найближчого цілого. Формула перекладу:
+        "(Фаренгейт - 32): 1,8 = Цельсій"
+        Приклад: "(50°F - 32): 1,8 = 10°C"        
+        */
+       const temperature = Number(prompt("Напишіть яка у Вас температура на вулиці?"))
+       console.log(Math.round((temperature - 32) / 1.8));
+    </script>
+</body>
+</html>

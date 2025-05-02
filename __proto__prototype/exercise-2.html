@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Перепишіть попередню задачу на функцію-конструктор об'єкту.
+        */
+        const Product = function(name,price, discount){
+            this._name = name;
+            this._price = price;
+            this._discount = discount;
+
+        }
+        
+        const washingMachine = new Product("LG", 300, 10,);
+       const coffeeMachine = new Product("Gorenje", 300, 20);
+       Product.prototype.getName = function(){
+        return this._name
+       }
+       Product.prototype.setName = function(newName){
+        if (typeof newName === "string" && newName.trim() !== "") {
+                this._name = newName.trim()
+            }
+       }
+       Product.prototype.getPrice = function(){
+        if (this._discount > 0) {
+                return (1 - this._discount / 100) * this._price
+            }
+              return this._price
+       }
+          Product.prototype.isNumber = function(value){
+            return (typeof value === "number" && Number.isFinite(value))
+          };
+       Product.prototype.setPrice = function(newPrice){
+        if (this.isNumber(newPrice) && newPrice > 0) {
+              this._price = newPrice
+              }
+       }
+       Product.prototype.getDiscount = function(){
+        return this._discount
+       }
+       Product.prototype.setDiscount = function(newDiscount){
+        if (this.isNumber(newDiscount) && newDiscount >= 0 && newDiscount < 100) {
+                this.discount = newDiscount
+              }
+       }
+
+    
+
+         
+    //    Object.defineProperties(Product.prototype, {
+    //     price: {
+    //         get(){
+    //         if (this._discount > 0) {
+    //             return (1 - this._discount / 100) * this._price
+    //         }
+    //           return this._price
+    //       },
+          
+    //       set(newPrice){
+    //           if (this.isNumber(newPrice) && newPrice > 0) {//typeof Number(newPrice) === "number"
+    //           this._price = newPrice
+    //           }
+    //       },
+    //    }
+    //    })
+
+      console.log(Product.prototype);
+       console.log(washingMachine.setName = "Samsung");
+       console.log(coffeeMachine.name)
+    </script>
+</body>
+</html>

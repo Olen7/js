@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      // const createUser = (name, lastName) => {
+      //     const user = {
+      //         name: name.trim(),
+      //         lastName: lastName.trim(),
+      //     }
+
+      //     return user;
+      // };
+    //   const userMethods = {
+    //     getFullName() {
+    //       return `${this.name} ${this.lastName}`;
+    //     },
+    //   };
+
+    //   const student = createUser("Mykola", "Oleh");
+    //   student.__proto__ = userMethods;
+      // console.log(student);
+      // console.log(student.getFullName())
+    //   const calcCirleSquare = function(radius) {
+    //     return radius ** 2 * Math.PI;
+    //   }
+    // //   calcCirleSquare.prototype = {
+    // //     constructor: calcCirleSquare
+    // //   }
+    //   console.log(calcCirleSquare.prototype)
+      const User = function (name, lastName) {
+        // this = {};
+        this.name = name.trim();
+        this.lastName = lastName.trim();
+        // this.__proto__ = User.prototype;
+        // return this;
+      };
+    /* 
+      User.prototype = {
+        constructor: User
+      }
+      */
+      User.prototype.getFullName = function () {
+        return `${this.name} ${this.lastName}`;
+      };
+
+      User.prototype.setName = function(newName) {
+        if(typeof newName === "string" && !isNaN(newName[0])) {
+            this.name = newName;
+        }
+      };
+
+        // console.log(User.prototype);
+
+      const student = new User("Mykola", "Oleh");
+      // student.__proto__ = User.prototype;
+      console.log(student);
+      console.log(student.getFullName());
+      const teacher = new User("Bogdan", "Lyamzin");
+      // teacher.__proto__ = User.prototype;
+      console.log(teacher);
+      console.log(teacher.getFullName());
+      //   console.log(student.getFullName());
+    </script>
+  </body>
+</html>

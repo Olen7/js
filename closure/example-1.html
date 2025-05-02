@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* create [[GlobalLexicalEnvironment]] = {
+            PI: необ'явлена,
+            calcCircleSquare: необ'явлена,
+        }
+        */
+        const PI = 3.1415926;
+        /* [[GlobalLexicalEnvironment]] = {
+            PI: 3.1415926
+        }
+        */
+        const calcCircleSquare = radius => {
+            return radius ** 2 * PI;
+        }
+        // calcCircleSquare[[Environment]] = [[GlobalLexicalEnvironment]]
+        console.log(calcCircleSquare(10));
+        /*
+        create [[LexicalEnvironment]] = {
+            radius: 10,
+        }
+        [[LexicalEnvironment]].radius ** 2 * calcCircleSquare[[Environment]].PI
+         if([[LexicalEnvironment]].radius ніякі об'єкти або функції не використовують)
+            delete [[LexicalEnvironment]]
+        */
+        console.log(calcCircleSquare(5));
+        /*
+        create [[LexicalEnvironment]] = {
+            radius: 5,
+        }
+        [[LexicalEnvironment]].radius ** 2 * calcCircleSquare[[Environment]].PI
+        if([[LexicalEnvironment]].radius ніякі об'єкти або функції не використовують)
+            delete [[LexicalEnvironment]]
+        */
+    </script>
+</body>
+</html>

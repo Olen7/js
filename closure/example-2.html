@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        /* create [[GlobalLexicalEnvironment]] = {
+            makeCounter: необ'явлена
+        }
+        */
+       const makeCounter = startCount => {
+        const counter = ()=> {
+            return startCount++;
+        }
+        return counter;
+       }
+       // makeCounter[[Environment]] = [[GlobalLexicalEnvironment]];
+       const firstCounter = makeCounter(0);
+       /*
+       create [[MakeCounterFirstLexicalEnvironment]] = {
+        startCount: 0,
+        conuter: function,
+       }
+       const counter = ()=> {
+            return startCount++;
+        }
+        counter[[Environment]] = [[MakeCounterFirstLexicalEnvironment]]
+        firstCounter = counter; firstCounter[[Environment]] = [[MakeCounterFirstLexicalEnvironment]]
+        if([[MakeCounterFirstLexicalEnvironment]]) - firstCounter, значить не видаляємо [[MakeCounterFirstLexicalEnvironment]]
+       */
+       console.log(firstCounter());
+       /*
+       create [[FirstLexicalEnvironment]] = {
+       }
+       return [[MakeCounterFirstLexicalEnvironment]];
+       [[MakeCounterFirstLexicalEnvironment]]++;
+       */
+       console.log(firstCounter());
+       /*
+       create [[FirstLexicalEnvironment]] = {
+       }
+       return [[MakeCounterFirstLexicalEnvironment]];
+       [[MakeCounterFirstLexicalEnvironment]]++;
+       */
+       const secondCounter = makeCounter(5);
+       /*
+       create [[MakeCounterSecondLexicalEnvironment]] = {
+        startCount: 5,
+        conuter: function,
+       }
+       const counter = ()=> {
+            return startCount++;
+        }
+        counter[[Environment]] = [[MakeCounterSecondLexicalEnvironment]]
+        firstCounter = counter; firstCounter[[Environment]] = [[MakeCounterSecondLexicalEnvironment]]
+        if([[MakeCounterSecondLexicalEnvironment]]) - firstCounter, значить не видаляємо [[MakeCounterSecondLexicalEnvironment]]
+       */
+    </script>
+</body>
+</html>

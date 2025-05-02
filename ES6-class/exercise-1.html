@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        створіть класс Product з такими властивостями:
+        - _name; 
+        - _price;
+        - _discount (має бути у відсотках, наприклад 20, 30, 40)
+        
+        Додайте класу сетери та гетери:
+        - set price;
+        - get price (Ціна має рахуватися так: якщо є discount, то цей відсоток має відніматися від _price, інакше треба брати просто _priceцууууууу);
+        - set name;
+        - get name;
+        - set discount;
+        - get discount. 
+        
+        Створіть за допомогою класу 2 об'єкти: washingMachine та coffeeMachine.
+        */
+       class Product{
+        _name; 
+        _price;
+        _discount
+        constructor({name, price, discount}){
+           this._name = name;
+           this._price = price;
+           this._discount = discount;
+        }
+
+        get name(){
+            return this._name
+        }
+        set name(name){
+            if (typeof name === "string" && name.trim() !== "") {
+                this._name = name
+            }
+        }
+
+        #isNumber(value){
+            return (typeof value === "number" && Number.isFinite(value))   
+        }
+
+        get price(){
+            if (this._discount > 0 && this._discount < 100) {
+            }
+            return this._price
+        }
+        set price(price){
+            if (this.#isNumber(price) && price > 0) {
+                this._price = price
+            }
+        }
+
+        get discount(){
+            return this._discount
+        }
+        set discount(discount){
+            if (this.#isNumber(discount) && discount > 0 && discount > 100) {
+                this._discount = discount
+            }
+           
+        }
+
+       }
+       const washingMachine = new Product({name:"Lenovo", price: 300, discount: 20,})
+       const coffeeMachine = new Product({name:"Lavazza", price: 700, discount: 10,})
+       console.log(washingMachine);
+       washingMachine.name = "Samsung"
+       washingMachine.price = 400
+       washingMachine.discount = 10
+       console.log(washingMachine);
+       
+    </script>
+</body>
+</html>

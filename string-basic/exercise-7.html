@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*використовуючи цикл, виведіть у консоль таку драбинку:
+        #
+        ##
+        ###
+        ####
+        #####
+        ######
+        #######
+        ########
+        #########
+        ##########*/
+        const maxCount = 20;
+        const input = Array(maxCount).fill('#').join("")
+        console.log(Array(maxCount).fill("#"));
+        for (let i = 1; i <= maxCount; i+= 1) {
+            console.log(input.slice(0, i ));
+            // input += '#'
+        }
+    </script>
+</body>
+</html>

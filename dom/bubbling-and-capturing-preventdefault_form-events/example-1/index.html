@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .btn-list {
+            padding: 40px;
+            border: 1px solid black;
+        }
+
+        .btn {
+            text-decoration: none;
+            font-family: Arial;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid;
+            border-radius: 5px;
+        }
+        
+        .btn-primary {
+            color: blue;
+            border-color: blue;
+        }
+        .btn-primary.active {
+            color: white;
+            background-color: blue;
+        }
+        
+        .btn-success {
+            color: green;
+            border-color: green;
+        }
+        .btn-success.active {
+            color: white;
+            background-color: green;
+        }
+        
+        .btn-alert {
+            color: red;
+            border-color: red;
+        }
+        .btn-alert.active {
+            color: white;
+            background-color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="btn-list" class="btn-list">
+       <a href="#" class="btn btn-primary">Button Primary</a>
+       <a href="#" class="btn btn-success">Button Success</a>
+       <a href="#" class="btn btn-alert">Button Alert</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

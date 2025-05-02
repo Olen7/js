@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        створіть функцію createConvertFunc, яка отримує курс валюти відносно гривні
+        та повертає функцію, що конвертує гривню у цю валюти. Приклад:
+        const convertToUSD = createConvertFunc(45.6);
+        const sallaryInUSD = convertToUSD(10000);
+        */
+    //    const convertUAH = (value, currencyName) => {
+    //     switch(currencyName) {
+    //         case "usd":
+    //             return value / 45.6;
+    //         case "euro":
+    //             return value / 47.1;
+    //     }
+    //    }
+    const createConvertFunc = value => {
+        const func = (count)=> count / value; 
+        return func;
+    }
+    const convertToUSD = createConvertFunc(45.6);
+    /*
+    [[createConvertFuncLexicalEnvironment]] = {
+        value: 45.6
+    }
+    func[[Environment]] = [[createConvertFuncLexicalEnvironment]];
+    */
+    const sallaryInUSD = convertToUSD(10000);
+    /*
+    [[LexicalEnvironment]] = {
+        count: 10000
+    }
+    return [[LexicalEnvironment]].count / [[createConvertFuncLexicalEnvironment]].value
+    */
+
+    const convertToEuro = createConvertFunc(47.1);
+    /*
+    [[createConvertFuncLexicalEnvironment]] = {
+        value: 47.1
+    }
+    func[[Environment]] = [[createConvertFuncLexicalEnvironment]];
+    */
+    const sallaryInEuro= convertToUSD(15000);
+    /*
+    [[LexicalEnvironment]] = {
+        count: 15000
+    }
+    return [[LexicalEnvironment]].count / [[createConvertFuncLexicalEnvironment]].value
+    */
+    </script>
+</body>
+</html>

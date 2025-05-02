@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у студента чи готовий він заповнювати табель. 
+        Якщо він відповість "Так", запитуйте у нього кожную оцінку з табеля послідовно.
+        Ваша задача - коли він натисне Cancel, вивести в консоль середню оцінку
+        та висновок. Висновок такий: якщо середня оцінка більше або дорівнює
+        6 - студент переходить на наступний курс, якщо меньше - ні. 
+        */
+       const answer = confirm("Чи готові Ви заповнювати табель?")
+       if (answer) {
+        let scoreSum = 0;
+        let count = 0;
+        let score = prompt("Напишіть Вашу оцінку");
+        
+        while(score !== null){
+            if (!isNaN(score) && score !== "") {
+                scoreSum += Number(score) 
+                count += 1 
+            }
+            score = prompt("Напишіть Вашу оцінку");
+       }
+       const avengeScore = scoreSum / count;
+       alert(avengeScore);
+       alert(avengeScore >= 6 ? "Ви переходите на наступний курс" : "Ви не переходите на наступний курс")
+
+    }
+       
+    // console.log(Number.isNaN("buyvb"));
+    </script>
+</body>
+</html>

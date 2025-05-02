@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        створіть клас User, який відповідає таким вимогам:
+        - отримує username, пароль та тип користувача;
+        - тип має бути або "student", або "teacher", або "admin". Якщо його не передали, то за замовчуванням він має бути "student";
+        - додайте два методи:
+            - checkPassword - отримує ймовірний пароль і повертає true, якщо паролі співпадають, і false, якщо ні;
+            - setPassword - отримує новий пароль, і замінює старий, якщо в новому мінімум 6 символів, і є хоч одна літера та одна цифра;
+        */
+       class  User {
+        username;
+        #password;
+        type = User.validTypes[0];//документація для розуміння що має бути значення за замовчуванням "student"
+        static validTypes = ["student", "teacher", "admin",] // статична властивість це те що належить класу а не об'єкту
+        // до статичних властивостей звертаються не через this а через імя класу 
+        constructor({username, password, type}){// як що я дисрукторизую то потрібно передавати об'єкт а як що ні том значення через кому,!
+           this.username = username;
+           this.#password = password;
+           this.type = User.validTypes.includes(type) ? type : User.validTypes[0];
+        }
+        checkPassword(value){
+            return this.#password === value;
+        }
+        setPassword(newPassword){
+            if (typeof newPassword !== "string") return
+            const isHasSymbol = newPassword.split("").some(symbol => isNaN(symbol))//l = true     5 = false
+            const isHasNumber = newPassword.split("").some(symbol => !isNaN(symbol))
+           if ( newPassword.length >= 6 && isHasSymbol && isHasNumber)  this.#password = newPassword;
+        }
+       }
+       const newUser = new User({username: "Bogdan Lamzin",  password:"Bogfguyv", type:"teacher"})
+       console.log(newUser);
+    </script>
+</body>
+</html>

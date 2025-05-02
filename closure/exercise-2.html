@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    const createUser = (name, lastName, sallaryValue) => {
+    //     const user = {
+    //         name,
+    //         lastName,
+    //         _sallary: sallaryValue,
+    //         get sallary(){
+    //             return this._sallary;
+    //         },
+    //         set sallary(value) {
+    //             if(typeof value === "number" && !Number.isNaN(value) && value > 0) {
+    //                 this._sallary = value;
+    //             }
+    //         },
+    //         getFullName() {
+    //             return `${this.name} ${this.lastName}`;
+    //         }
+    //     }
+    //     return user;
+    //    }
+
+    //    const newUser = createUser("Микола", "Олень", 5000);
+       
+    //    newUser._sallary = -5000;
+    //    console.log(newUser.sallary);
+    const createUser = (name, lastName, sallaryValue) => {
+        const user = {
+            name,
+            lastName,
+            get sallary(){
+                return sallaryValue;
+            },
+            set sallary(value) {
+                if(typeof value === "number" && !Number.isNaN(value) && value > 0) {
+                    sallaryValue = value;
+                }
+            },
+            getFullName() {
+                return `${this.name} ${this.lastName}`;
+            }
+        }
+        return user;
+       }
+
+       const newUser = createUser("Микола", "Олень", 5000);
+       /*
+       [[createUserLexicalEnvironment]] = {
+        name: "Микола", 
+        lastName: "Олень", 
+        sallaryValue: 5000
+       }
+       const user = {
+            name,
+            lastName,
+            get sallary(){
+                return sallaryValue;
+            },
+            // get sallary[[Environment]] = [[createUserLexicalEnvironment]]
+            set sallary(value) {
+                if(typeof value === "number" && !Number.isNaN(value) && value > 0) {
+                    sallaryValue = value;
+                }
+            },
+            // set sallary[[Environment]] = [[createUserLexicalEnvironment]]
+            getFullName() {
+                return `${this.name} ${this.lastName}`;
+            }
+        }
+       */
+       
+       newUser.sallary = 6000;
+       /*
+       [[LexicalEnvironment]] = {
+        value: 6000
+       }
+       [[createUserLexicalEnvironment]].salaryValue = 6000;
+       */
+       console.log(newUser.sallary);
+    </script>
+</body>
+</html>

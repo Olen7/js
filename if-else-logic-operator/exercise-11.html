@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Напишіть код, який вираховує діагноз по індексу масу тіла людини.
+        Індекс маси тіла рахується так: вага в кг / зріст у м в квадраті.
+        Запитайте у користувача спочатку його вагу у кг, потім - зріст у метрах.
+        Вирахуйте індекс маси тіла з точністю 1 знаку після коми.
+        Після чого вирахуйте дігноз. Правила такі:
+        - якщо індекс маси тіла меньше 15, то діагноз - "анорексія";
+        - якщо від в діапазоні від 15 і до 25, то діагноз - "вага нормальна";
+        - якщо більше 25 і до 30, діагноз - "зайва вага";
+        - якщо більше 30 і до 35, діагноз - "ожиріння I ступіня";
+        - якщо більше 35 і до 40, діагноз - "ожиріння II ступіня";
+        - якщо більше 40, діагноз - "ожиріння III ступіня";
+        */
+       const weight = 200//Number(prompt("Напишіть Вашу вагу").trim()) 
+       const height = 1.90//Number(prompt("Напишіть Ваш зріст в метрах!").trim()) 
+       function getBodyMassIndex(weight, height){
+         return Number((weight / (height ** 2)).toFixed(1)) 
+       }
+ 
+       function getDiagnoseBodyMassIndex(num){
+        console.log(num);
+        if (num > 45) {
+            return "ожиріння III ступіня"
+        }
+                     //   0              1               2                3                     4                    5         
+        const arr = ["анорексія","вага нормальна", "вага нормальна", "зайва вага", "ожиріння I ступіня", "ожиріння II ступіня", ]
+        let index = Math.floor((num - 10) / 5)
+         // старий варіант
+    //     if (num < 15) {
+    //     return "анорексія"
+    //       }else if (num < 25) {
+    //     return ("вага нормальна")
+    //         }else if (num < 30) {
+    //     return "зайва вага"
+    //         }else if (num < 35) {
+    //     return "ожиріння I ступіня"
+    //         }else if (num < 40) {
+    //     return "ожиріння II ступіня"
+    //         }
+    //     return "ожиріння III ступіня"
+     return arr[index]
+     }
+       
+       console.log(getDiagnoseBodyMassIndex(getBodyMassIndex(weight, height)));
+    </script>
+</body>
+</html>

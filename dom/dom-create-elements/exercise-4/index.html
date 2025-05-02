@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltip-text {
+
+        width: 120px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltip-text::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+</style>
+
+<body style="text-align:center;">
+
+    <h2>Tooltips</h2>
+
+    <div class="tooltip" data-tooltip="Текст підказки">Hover over me
+    </div>
+    <a href="#" class="tooltip" data-tooltip="Незломлені, незламні, не здаються!">Девіз Мартеллів</a>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

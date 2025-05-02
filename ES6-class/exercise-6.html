@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        створіть класс Product, який матиме такі властивості:
+        - name;
+        - price;
+        - category (має бути або "notebook", або "phone", або "tv");
+        Створіть 2-3 об'єкти цього класу, після чого створіть такі методи:
+        - getCheapestProduct - отримує масив об'єктів товарів і повертає об'єкт з найменшим значенням price;
+        - getMostExpensiveProduct - отримує масив об'єктів товарів і повертає об'єкт з найбільшим значенням price;
+        - sortByPrice - отримує першим аргументом масив об'єктів товарів, другим - порядок сортування ("asc" або "desc").
+            Якщо передали "asc" - то повертати новий масив, відсортоватий по зростанню ціни, якщо "desc" - повертати новий масив,
+            відсортований по зменшеню ціни;
+        - sortByCategory - отримує аргументом масив об'єктів товарів і повертає новий масив, відсортований по категоріям. 
+        */
+       class Product{
+        static categoriesProduct = ["notebook", "phone", "tv",];
+        constructor({name, price, category}){
+            this.name = name;
+            this.price = price;
+            this.category = Product.categoriesProduct.includes(category) ? category : Product.categoriesProduct[0];
+        }
+        static getCheapestProduct(arr){//[{}{}{}]
+            return arr.toSorted((a,b) => a.price - b.price)[0]
+        }
+        static getMostExpensiveProduct(arr){//[{}{}{}]
+            return arr.toSorted((a,b) => b.price - a.price)[0]
+        }
+        static sortByPrice(arr, order = "asc"){//[{}{}{}]
+            return order === "desc" ? arr.toSorted((a,b) => b.price - a.price) : arr.toSorted((a,b) => a.price - b.price);
+        }
+        static sortByCategory(array){
+            const result = []
+            for (let i = 0; i < array.length; i += 1) {
+                  const {category} =  array[i]
+                  if (result.some(item => item.category === category)) continue
+                 const arr = array.filter(item => item.category === category)//
+                 result.push(...arr)// 
+            }
+            return result
+        }
+       }
+        const product1 = new Product({name: 'Lenovo', price: 2500, category: "notebook"})
+        const product2 = new Product({name: 'LG', price: 700, category: "tv"})
+        const product3 = new Product({name: 'Apple', price: 1700, category: "phone"})
+        const product4 = new Product({name: 'LG', price: 900, category: "phone"})
+        console.log(Product.sortByCategory([product1, product4,product2,product3,],));
+        //
+    
+    </script>
+</body>
+</html>

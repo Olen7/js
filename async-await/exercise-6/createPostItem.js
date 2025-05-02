@@ -1,0 +1,1 @@
+export const createPostItem = el => `<li class="item">${el.title}, ${el.text} <button type="button" class="delete-button" data-id="${el.id}">delete</button></li>`

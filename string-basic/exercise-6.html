@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Запитайте у люди прізвище, ім'я та по-батькові та виведіть в консоль
+        абревіатуру. Тобто якщо він вкаже "Taras" "Grigorievich" "Shevchenko"
+        ви маєте вивести "STG".
+        */
+       const firstName = prompt("Напишіть Ваше імя").trim()
+       const lastName = prompt("Напишіть Ваше призвіще").trim()
+       const middleName = prompt("Напишіть Ваше призвіще по-батькові").trim()
+       console.log(`${firstName[0]}${lastName[0]}${middleName[0]}`.toUpperCase());
+       console.log(firstName[0],lastName[0],middleName[0]);
+       </script>
+</body>
+</html>
