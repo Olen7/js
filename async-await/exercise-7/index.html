@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form action="#" class="form" id="filter-product">
+        <div class="price-filter">
+            <label for="minPrice" class="label-price">Мінімальна ціна:</label>
+            <input type="number" id="minPrice" name="minPrice" min="0" placeholder="0" />
+          
+            <label for="maxPrice" class="label-price">Максимальна ціна:</label>
+            <input type="number" id="maxPrice" name="maxPrice" min="0" placeholder="10000" />
+          </div>
+
+        <label for="category" class="category">Категорія:</label>
+        <select id="category" name="category">
+          <option value="">-- Оберіть категорію --</option>
+          <option value="food">Їжа</option>
+          <option value="tech">Техніка</option>
+          <option value="books">Книги</option>
+          <option value="clothes">Одяг</option>
+        </select>
+      
+        <button type="submit" class="button">Застосувати фільтр</button>
+    </form>
+    <ul id="list"></ul>
+    <script type="module" src="./index.js" ></script>
+  </body>
+</html>

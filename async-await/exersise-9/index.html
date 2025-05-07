@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    
+    <form action="#" class="form" id="filter-product">
+        <div class="price-filter">
+            <label for="minPrice" class="label-price">Мінімальна ціна:</label>
+            <input type="number" id="minPrice" name="minPrice" min="0" placeholder="0" />
+          
+            <label for="maxPrice" class="label-price">Максимальна ціна:</label>
+            <input type="number" id="maxPrice" name="maxPrice" min="0" placeholder="10000" />
+          </div>
+     
+        <label for="category" class="category">Категорія:</label>
+        <select id="category" name="category">
+          <option value="">-- Оберіть категорію --</option>
+          <option value="food">Їжа</option>
+          <option value="tech">Техніка</option>
+          <option value="books">Книги</option>
+          <option value="clothes">Одяг</option>
+        </select>
+      
+        <button type="submit" class="button">Застосувати фільтр</button>
+        
+    </form>
+    <form action="#" class="form" id="filter-container">
+      <label for="field-select">Сортувати за:</label>
+      <select id="field-select" name="category" class="filter-select">
+        <option value="" disabled selected>Виберіть значення</option>
+        <option value="price">Ціна</option>
+        <option value="name">Назва</option>
+        </select>
+    </form>
+    <div class="sort-buttons">
+      <button type="button" value="asc" class="sort-btn" data-sort="asc">↑ Asc</button>
+      <button type="button" value="desc"  class="sort-btn" data-sort="desc">↓ Desc</button>
+    </div>
+    <ul id="list"></ul>
+    <div id="modal"></div>
+    <div id="alert" style="display: none"></div>
+    <script type="module" src="./index.js"></script>
+
+  </body>
+</html>
