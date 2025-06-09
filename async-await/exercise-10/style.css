@@ -1,0 +1,98 @@
+#products-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#products-search-form label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+#products-search-form input[type="text"] {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#products-search-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+#products-search-form button {
+  padding: 10px 16px;
+  background-color: #2b8a3e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#products-search-form button:hover {
+  background-color: #237232;
+}
+#products {
+  list-style: none;
+  padding: 0;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+#products li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+#products li:hover {
+  transform: translateY(-2px);
+}
+
+#products li .img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+#products li .name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+#products li .price {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2b8a3e;
+  margin: 0;
+}
+
+#products li p {
+  margin: 0;
+}

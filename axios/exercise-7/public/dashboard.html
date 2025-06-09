@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Панель керування</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f8;
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .logout-btn {
+        background-color: #e74c3c;
+        border: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .logout-btn:hover {
+        background-color: #c0392b;
+      }
+
+      main {
+        flex-grow: 1;
+        padding: 2rem;
+      }
+
+      .dashboard-panel {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .dashboard-panel h2 {
+        margin-bottom: 1rem;
+        color: #2c3e50;
+      }
+
+      .dashboard-panel p {
+        color: #666;
+        line-height: 1.6;
+      }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      }
+
+      .modal.hidden {
+        display: none;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 2rem 3rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c3e50;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Панель користувача</h1>
+      <button class="logout-btn" onclick="logout()">Вийти</button>
+    </header>
+
+    <main>
+      <div class="dashboard-panel">
+        <h2 id="welcome-title">Вітаємо!</h2>
+        <p>
+          Тут може бути ваша статистика, повідомлення або інші персональні дані.
+        </p>
+      </div>
+    </main>
+    <div id="logout-modal" class="modal hidden">
+      <div class="modal-content">
+        <p id="logout-message">Ви вийшли з акаунта</p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+      const email = localStorage.getItem("userEmail");
+      const welcome = document.getElementById("welcome-title");
+
+      axios
+        .get("/users")
+        .then((res) => {
+          const matchedUser = res.data.find((user) => user.email === email);
+
+          if (matchedUser) {
+            welcome.textContent = `👋 Вітаємо, ${matchedUser.name}!`;
+          } else {
+            welcome.textContent = `👋 Вітаємо, користувачу!`;
+          }
+        })
+        .catch((err) => {
+          console.error("Помилка при пошуку користувача:", err);
+          welcome.textContent = "👋 Вітаємо!";
+        });
+      function logout() {
+        const modal = document.getElementById("logout-modal");
+        modal.classList.remove("hidden");
+
+        // Через 2 секунди переходимо на головну
+        setTimeout(() => {
+          window.location.href = "/index.html";
+        }, 2000);
+      }
+    </script>
+    
+  </body>
+</html>

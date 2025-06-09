@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Список користувачів</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background-color: #f9f9f9;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      ul.user-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 1.2rem;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+      }
+
+      .user {
+        margin: 0;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      .user-id {
+        font-weight: bold;
+      }
+
+      .user-name {
+        font-weight: 500;
+      }
+
+      .user-email {
+        color: #555;
+      }
+
+      .delete-btn {
+        align-self: flex-end;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .delete-btn:hover {
+        background-color: #c0392b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Список зареєстрованих користувачів</h1>
+    <ul id="users-list" class="user-list"></ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const usersList = document.getElementById("users-list");
+
+      axios
+        .get("/users")
+        .then((res) => {
+          res.data.forEach((user) => {
+            const li = document.createElement("li");
+            li.className = "user-item";
+            li.innerHTML = `
+            <p class="user user-id">ID: ${user.id}</p>
+            <p class="user user-name">Ім’я: ${user.name}</p>
+            <p class="user user-email">Email: ${user.email}</p>
+            <button data-id="${user.id}" class="delete-btn">Видалити</button>      
+          `;
+            usersList.appendChild(li);
+          });
+
+          // Обробка видалення
+          document.querySelectorAll(".delete-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const id = btn.dataset.id;
+              if (
+                confirm("Ви впевнені, що хочете видалити цього користувача?")
+              ) {
+                axios
+                  .delete(`/users/${id}`)
+                  .then(() => {
+                    btn.closest("li").remove();
+                  })
+                  .catch((err) => {
+                    alert("❌ Не вдалося видалити користувача");
+                    console.error(err);
+                  });
+              }
+            });
+          });
+        })
+        .catch((err) => {
+          usersList.innerHTML = `<li style="color:red">Помилка при завантаженні користувачів</li>`;
+          console.error(err);
+        });
+    </script>
+  </body>
+</html>

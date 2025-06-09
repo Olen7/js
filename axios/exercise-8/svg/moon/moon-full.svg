@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" >
+  <!-- Повний місяць -->
+  <circle cx="32" cy="32" r="17.5" fill="#FFD966" />
+
+  <!-- Кратери -->
+  <circle cx="26" cy="28" r="2" fill="#f2d27a" />
+  <circle cx="34" cy="36" r="1.5" fill="#f2d27a" />
+  <circle cx="38" cy="25" r="1.2" fill="#ffe58a" />
+  <circle cx="30" cy="40" r="1" fill="#ffeaa7" />
+</svg>

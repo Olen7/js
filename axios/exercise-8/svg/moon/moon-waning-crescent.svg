@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- Кліп для освітлення (твоя точна форма) -->
+    <clipPath id="crescent-clip">
+      <path d="
+        M41.25 46.82
+        c-16.7.48-25.61-19.52-14.07-31.61
+        h0l.08-.06
+        a18.38 18.38 0 00-2.38.86
+        A17.5 17.5 0 1039.12 48
+        a18.21 18.21 0 002.23-1.19z"
+      />
+    </clipPath>
+  </defs>
+
+  <!-- Темна основа -->
+  <circle cx="32" cy="32" r="16.5" fill="#e5e7eb" />
+
+  <!-- Жовта освітлена частина -->
+  <circle cx="32" cy="32" r="16.5" fill="#FFD966" clip-path="url(#crescent-clip)" />
+
+  <!-- Кратери у правій темній зоні -->
+  <circle cx="38" cy="28" r="2" fill="#cbd5e1" />
+  <circle cx="34" cy="36" r="1.5" fill="#cbd5e1" />
+  <circle cx="36" cy="25" r="1.2" fill="#d1d5db" />
+  <circle cx="36" cy="42" r="1" fill="#d1d5db" />
+</svg>
