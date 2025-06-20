@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        display: flex;
+      }
+      :root {
+        --color-primary: #3498db;
+        --color-primary-dark: #2980b9;
+        --color-accent: #e74c3c;
+        --color-accent-dark: #c0392b;
+        --color-grey: #f4f4f4;
+        --color-text: #2c3e50;
+        --color-muted: #555;
+        --radius: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 340px;
+        padding: 20px;
+        margin: 2rem auto;
+        background: var(--color-grey);
+        border-radius: var(--radius);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+
+      .form-group label {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="number"],
+      .form-group select {
+        padding: 0.6rem 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        transition: 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        outline: none;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        margin-right: 0.5rem;
+        transform: scale(1.2);
+      }
+
+      button {
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"] {
+        background-color: var(--color-primary);
+        color: #fff;
+        width: 100%;
+      }
+
+      button[type="submit"]:hover {
+        background-color: var(--color-primary-dark);
+      }
+
+      button#to-login,
+      button#to-register {
+        background-color: #e0e0e0;
+        color: #333;
+      }
+
+      button#to-login:hover,
+      button#to-register:hover {
+        background-color: #c0c0c0;
+      }
+
+      .error {
+        color: red;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .favorite {
+        font-weight: bold;
+      }
+
+      .user-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 1rem;
+      }
+
+      .user-email {
+        font-weight: bold;
+        color: #333;
+      }
+
+      .btn-logout {
+        position: absolute;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--color-accent);
+        color: white;
+        border: none;
+        border-radius: 6px;
+      }
+
+      .btn-logout:hover {
+        background-color: var(--color-accent-dark);
+      }
+
+      .my-movies {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .my-movies h2 {
+        text-align: center;
+        font-size: 1.6rem;
+        color: var(--color-text);
+        margin-bottom: 1.5rem;
+      }
+
+      .my-movies-list {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .my-movies-list ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .my-movies-item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .my-movies-item p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .my-movies-item .title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--color-text);
+      }
+
+      .my-movies-item .director,
+      .my-movies-item .type,
+      .my-movies-item .release-year {
+        color: var(--color-muted);
+      }
+
+      .my-movies-item button {
+        background-color: var(--color-accent);
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+      }
+
+      .my-movies-item button:hover {
+        background-color: var(--color-accent-dark);
+      }
+
+      @media (max-width: 600px) {
+        .add-movie-form {
+          padding: 1rem;
+        }
+
+        .add-movie-form h2 {
+          font-size: 1.3rem;
+        }
+
+        button[type="submit"] {
+          font-size: 0.95rem;
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+      .bolt {
+        font-weight: bold;
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5); /* затемнення */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      .modal-message {
+        background-color: white;
+        padding: 20px 30px;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        max-width: 80%;
+        text-align: center;
+      }
+
+      /* кольори типу */
+      .modal-message.success {
+        color: green;
+        border: 2px solid green;
+      }
+
+      .modal-message.error {
+        color: red;
+        border: 2px solid red;
+      }
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #333;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        animation: spin 0.8s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      }
+
+      .confirm-modal {
+        background: white;
+        padding: 24px 32px;
+        border-radius: 12px;
+        max-width: 90%;
+        width: 320px;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.2s ease;
+      }
+
+      .confirm-text {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+      }
+
+      .confirm-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .btn-confirm,
+      .btn-cancel {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn-confirm {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .btn-cancel {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="register" class="hidden">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        autocomplete="username"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        id="pwd"
+        required
+      />
+      <!-- <input type="checkbox" onclick="pwd.type = this.checked ? 'text' : 'password'"> -->
+      <button type="submit">Register</button>
+      <button type="button" id="to-login">To Login</button>
+    </form>
+
+    <form id="login" class="hidden">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        autocomplete="username"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        required
+      />
+      <button type="submit">Login</button>
+      <button type="button" id="to-register">To Register</button>
+    </form>
+
+    <div class="hidden my-movies">
+      <div>
+        <h2>Додати фільм</h2>
+        <form id="movieForm">
+          <div class="form-group">
+            <label for="title"
+              >Назва фільму<span style="color: red">*</span></label
+            >
+            <input type="text" id="title" name="title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="director"
+              >Режисер<span style="color: red">*</span></label
+            >
+            <input type="text" id="director" name="director" required />
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label for="favorite">
+              <input type="checkbox" id="favorite" name="favorite" />
+              Улюблений
+            </label>
+          </div>
+          <div class="form-group type">
+            <label for="type">Тип фільму:</label>
+            <select id="type-select" name="type" required>
+              <option value="">-- Оберіть тип --</option>
+            </select>
+          </div>
+          <div class="form-group year">
+            <label for="releaseYear"
+              >Рік виходу<span style="color: red">*</span></label
+            >
+            <input
+              type="number"
+              id="releaseYear"
+              name="releaseYear"
+              min="1888"
+              max="2100"
+              required
+            />
+          </div>
+          <button type="submit">Додати фільм</button>
+        </form>
+      </div>
+      <div class="my-movies-list">
+        <ul id="movies-list">
+          <!-- <li class="my-movies-item">
+            <p class="title">Avatar 2</p>
+            <p class="director">James Cameron</p>
+            <p class="type">Action</p>
+            <p class="release-year">2022</p>
+            <button type="button" class="delete-btn">Delete</button>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./authAuthorization.js"></script>
+    <script type="module" src="./movies.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 300px;
+        padding: 20px;
+        margin: 20px auto;
+        background: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      form input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      form button {
+        padding: 10px;
+        border: none;
+        background-color: #4a90e2;
+        color: white;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      form button:hover {
+        background-color: #357ab8;
+      }
+
+      form button#to-login,
+      form button#to-register {
+        background-color: #e0e0e0;
+        color: #333;
+      }
+
+      form button#to-login:hover,
+      form button#to-register:hover {
+        background-color: #c0c0c0;
+      }
+      .error{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="register" class="hidden">
+      <input type="email" name="email" placeholder="Email" autocomplete="username" required />
+      <input type="password" name="password" placeholder="Password" autocomplete="current-password" id="pwd" required />
+      <input type="checkbox" onclick="pwd.type = this.checked ? 'text' : 'password'">
+      <button type="submit">Register</button>
+      <button type="button" id="to-login">To Login</button>
+    </form>
+
+    <form id="login" class="hidden">
+      <input type="email" name="email" placeholder="Email" autocomplete="username" required />
+      <input type="password" name="password" placeholder="Password" autocomplete="current-password" required />
+      <button type="submit">Login</button>
+      <button type="button" id="to-register">To Register</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

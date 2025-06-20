@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 60px 20px;
+        flex-wrap: wrap;
+        position: relative;
+        flex-direction: column;
+      }
+
+      form.login-form,
+      form.register-form {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 320px;
+      }
+
+      form h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      form button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      form.login-form button {
+        background-color: #4a90e2;
+        color: white;
+        margin-bottom: 5px;
+      }
+
+      form.login-form button:hover {
+        background-color: #357ab8;
+      }
+
+      form.register-form button {
+        background-color: #4caf50;
+        color: white;
+        margin-bottom: 5px;
+      }
+
+      form.register-form button:hover {
+        background-color: #3e8e41;
+      }
+      .error {
+        color: red;
+      }
+      .hidden {
+        display: none;
+      }
+      .movie-section {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        font-family: "Segoe UI", sans-serif;
+        background-color: #fefefe;
+        color: #333;
+      }
+
+      .movie-section h2 {
+        margin-bottom: 16px;
+        font-size: 24px;
+        text-align: center;
+        color: #222;
+      }
+
+      /* Користувач */
+      .user-interface {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        background-color: #e3f2fd;
+        padding: 10px 16px;
+        border-radius: 8px;
+      }
+
+      .user-email {
+        font-weight: 600;
+        color: #1565c0;
+      }
+
+      .btn-logout {
+        background-color: #e53935;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-logout:hover {
+        background-color: #c62828;
+      }
+
+      /* Форма */
+      #add-movie-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 32px;
+      }
+
+      #add-movie-form label {
+        display: flex;
+        flex-direction: column;
+        font-weight: 500;
+      }
+
+      #add-movie-form input,
+      #add-movie-form select {
+        padding: 10px 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 4px;
+        background-color: #fff;
+      }
+
+      .favorit {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-submit {
+        padding: 12px 16px;
+        font-size: 16px;
+        background-color: #1976d2;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-submit:hover {
+        background-color: #1565c0;
+      }
+
+      /* Список фільмів */
+      #movies-list {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      #movies-list li {
+        background-color: #f0f4f8;
+        padding: 14px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        position: relative;
+      }
+      .edit-list {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+      /* Сховати popover за замовчуванням (працює разом з popover API) */
+      #modal:popover-open {
+        display: block;
+      }
+
+      /* Загальні стилі для модалки */
+      #modal {
+        padding: 20px;
+        border-radius: 12px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        width: 300px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Заголовок */
+      #modal h2 {
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      /* Форматування label + input */
+      #modal form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      /* Поля вводу */
+      #modal input[type="text"],
+      #modal input[type="number"] {
+        padding: 8px;
+        border: 1px solid #aaa;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      /* Чекбокс поруч з текстом */
+      #modal label[for="favorite"] {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Кнопки */
+      #modal button {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      /* Кнопка "Зберегти" */
+      #modal button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      /* Кнопка "Закрити" */
+      #modal button[type="button"] {
+        background-color: #e0e0e0;
+        color: #333;
+      }
+      #find-by-id-form button {
+        background-color: #e0e0e0;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="movie-section hidden">
+      <div class="user-interface">
+        <p class="user-email">user</p>
+        <button type="button" id="logout" class="btn-logout">Logout</button>
+      </div>
+
+      <h2>Додати фільм</h2>
+      <form id="add-movie-form">
+        <label>
+          Назва фільму:
+          <input type="text" name="title" required />
+        </label>
+
+        <label>
+          Режисер:
+          <input type="text" name="director" required />
+        </label>
+
+        <label class="favorit">
+          <span>Улюблений:</span>
+          <input type="checkbox" name="favorite" />
+        </label>
+
+        <label>
+          Тип:
+          <select name="genre" id="genre" required>
+            <!-- <option value="film">Фільм</option>
+            <option value="series">Серіал</option> -->
+          </select>
+        </label>
+
+        <label>
+          Рік випуску:
+          <input
+            type="number"
+            name="releaseYear"
+            required
+            min="1800"
+            max="2050"
+          />
+        </label>
+
+        <button type="submit" class="btn-submit">Додати фільм</button>
+      </form>
+
+      <h2>Список фільмів</h2>
+      <ul id="movies-list"></ul>
+      
+    </section>
+
+    <form class="login-form hidden" id="login">
+      <h2>Вхід</h2>
+      <label for="email">Електронна пошта</label>
+      <input type="email" name="email" required autocomplete="email" />
+
+      <label for="password">Пароль</label>
+      <input
+        type="password"
+        name="password"
+        required
+        autocomplete="current-password"
+      />
+      <button type="submit">Увійти</button>
+      <button type="button" id="toggle-register">Форма реєстрація</button>
+    </form>
+
+    <form class="register-form hidden" id="register">
+      <h2>Реєстрація</h2>
+      <label for="username">Імя</label>
+      <input type="text" name="username" required />
+
+      <label for="email">Електронна пошта</label>
+      <input type="email" name="email" required autocomplete="email" />
+
+      <label for="password">Пароль</label>
+      <input
+        type="password"
+        name="password"
+        required
+        autocomplete="new-password"
+      />
+      <button type="submit">Зареєструватись</button>
+      <button type="button" id="toggle-login">Форма логінення</button>
+    </form>
+    <div id="modal" popover>
+      <h2>Редагування фільму</h2>
+      <form id="edit-movie-form">
+        <label for="title">Назва</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="director">Режисер</label>
+        <input type="text" id="director" name="director" required />
+
+        <label for="favorite">Улюблений</label>
+        <input type="checkbox" id="favorite" name="favorite" />
+
+        <label>
+          Тип:
+          <select name="genre" id="genre-modal" required>
+            <!-- <option value="film">Фільм</option>
+            <option value="series">Серіал</option> -->
+          </select>
+        </label>
+
+        <label for="releaseYear">Рік випуску</label>
+        <input type="number" id="releaseYear" name="releaseYear" required />
+
+        <button type="submit">Зберегти</button>
+        <!-- Кнопка Закриття -->
+        <button popovertarget="modal" type="button">Закрити</button>
+      </form>
+    </div>
+    <form id="find-by-id-form" class="hidden" title="1234">
+      <label for="findById">Знайти фільм по ID</label>
+      <input type="text" name="findById" required />
+      <button type="submit">Send</button>
+    </form>
+    <ul id="movies-list-by-id"></ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js" type="module"></script>
+    <script src="./movie.js"></script>
+  </body>
+</html>

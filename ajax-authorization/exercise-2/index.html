@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Контейнер списку */
+      #categories {
+        list-style: none;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 600px;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      /* Категорія */
+      .listItem {
+        background-color: #f5f5f5;
+        margin: 10px 0;
+        padding: 15px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        position: relative;
+      }
+
+      .listItem:hover {
+        background-color: #e0f0ff;
+        transform: scale(1.01);
+      }
+
+      /* Продукт */
+      .product-list {
+        margin: 8px 0 0 10px;
+        padding: 10px 15px;
+        background-color: #dff6ff;
+        border-left: 4px solid #0099cc;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #333;
+        animation: fadeIn 0.3s ease-in;
+      }
+
+      /* Анімація появи */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="categories"></ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
